@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+            <ion-icon name="options"></ion-icon>
+
+        </ion-button>
+        </ion-buttons>
+      <ion-title>
+        Solutions
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+
+<ion-content no-padding>
+
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+      
+    <ion-searchbar style="margin-top: 10px;" (ionChange)="getSearchTerm($event)" placeholder="Search for solutions here"></ion-searchbar>
+
+    <ion-list>
+
+      <ion-item (click)="openDetails(i)" style="padding: 0px;" *ngFor="let solution of solutionsfiltered; let i = index">
+          <div style="border-radius: 10px; margin-top: 10px; margin-bottom: 20px;">
+              <div style="font-weight: 500; margin-bottom: 10px;">
+                {{solution.title}}
+              </div>
+              
+              <div>
+                {{solution.description}}
+              </div>
+            </div>
+      </ion-item>
+    </ion-list>
+
+</ion-content>

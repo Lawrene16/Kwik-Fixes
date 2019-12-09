@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+            <ion-icon name="options"></ion-icon>
+
+        </ion-button>
+        </ion-buttons>
+      <ion-title>
+        Engineers
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+  
+  <ion-searchbar (ionChange)="getSearchTerm($event)" placeholder="Search for Engineers here">
+
+  </ion-searchbar>
+  <ion-list>
+      <ion-item-sliding  *ngFor="let engineer of engineersfiltered">
+          <ion-item-options side="end">
+              <ion-item-option color="success" (click)="contact(engineer)">Contact</ion-item-option>
+            </ion-item-options>
+          <ion-item>
+              <img class="userimg" height="30" src="{{engineer.photo}}">
+            <ion-label style="margin-left: 1px">
+              <span><span style="font-weight: 500;">Name:</span> {{engineer.name}}</span><br>
+              <span><span style="font-weight: 500;">Phone No:</span> {{engineer.phonenumber}}</span><br>
+              <span><span style="font-weight: 500;">Location:</span> {{engineer.location}}</span>
+              <span><span style="font-weight: 500;"></span></span>
+            </ion-label>
+          </ion-item>
+      </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

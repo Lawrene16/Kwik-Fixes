@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+            <ion-icon name="options"></ion-icon>
+
+        </ion-button>
+        </ion-buttons>
+      <ion-title>
+        Promotions
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let promotion of promotions" style="padding: 10px;">
+    <div style="width: 100%; height: 70px;">
+      <img style="height: 60px; float: left; width: 70px;" src="{{promotion.logo}}">
+      <div style="float: left; font-size: 16px; margin-left: 10px;">
+        <span style="font-weight: 700;">{{promotion.name}}</span><br>{{promotion.date}}
+      </div>
+    </div>
+    <div style="height: 200px; width: 100vw;">
+      <img style="object-fit: cover; height: 100%; width: 100%;" src="{{promotion.image}}">
+    </div>
+    <div style="margin-top: 10px;">
+        {{promotion.description}}
+    </div>
+  </ion-card>
+
+</ion-content>
